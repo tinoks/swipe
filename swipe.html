@@ -1,0 +1,52 @@
+<html>
+<head>
+</head>
+<body>
+ <script>
+	document.addEventListener('touchstart',handleTouchStart, false);        
+	document.addEventListener('touchmove', handleTouchMove, false);
+
+	var xDown = null;                                                        
+	var yDown = null;                                                        
+
+	function handleTouchStart(evt) {
+	  if(e.touches.length == 3){
+		xDown = evt.touches[0].clientX;                                      
+		yDown = evt.touches[0].clientY;   	  	  
+	  } 	                                  
+	};                                                
+
+	function handleTouchMove(evt) {
+		if ( ! xDown || ! yDown || e.touches.length != 3) {
+			return;
+		}
+
+		var xUp = evt.touches[0].clientX;                                    
+		var yUp = evt.touches[0].clientY;
+
+		var xDiff = xDown - xUp;
+		var yDiff = yDown - yUp;
+
+		if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+			if ( xDiff > 0 ) {
+				/* left swipe */ 
+			} else {
+				/* right swipe */
+			}                       
+		} else {
+			if ( yDiff > 0 ) {
+				document.body.appendChild(document.createTextNode("up" + yDiff))
+				document.body.append(document.createElement("br"))
+			} else { 
+				document.body.appendChild(document.createTextNode("down" +yDiff))
+				document.body.append(document.createElement("br"))
+			}                                                                 
+		}
+		
+		/* reset values */
+		xDown = null;
+		yDown = null;                                             
+	};
+ </script>
+</body>
+</html>
