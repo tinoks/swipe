@@ -10,14 +10,14 @@
 	var yDown = null;                                                        
 
 	function handleTouchStart(evt) {
-	  if(e.touches.length == 3){
+	  if(evt.touches.length == 3){
 		xDown = evt.touches[0].clientX;                                      
 		yDown = evt.touches[0].clientY;   	  	  
 	  } 	                                  
 	};                                                
 
 	function handleTouchMove(evt) {
-		if ( ! xDown || ! yDown || e.touches.length != 3) {
+		if ( ! xDown || ! yDown || evt.touches.length != 3) {
 			return;
 		}
 
